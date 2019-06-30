@@ -26,6 +26,12 @@ namespace JsonBenchmarks
         }
 
         [Benchmark]
+        public string Serialize_Utf8Json_Simple_ToString ()
+        {
+            return Utf8Json.JsonSerializer.ToJsonString (Fixtures.SimpleJsonObject);
+        }
+
+        [Benchmark]
         public string Serialize_Newtonsoft_Simple_ToString ()
         {
             return JsonNet.SerializeObject (Fixtures.SimpleJsonObject);
@@ -65,6 +71,12 @@ namespace JsonBenchmarks
         public string Serialize_SpanJson_Complex_ToString ()
         {
             return SpanJS.Serialize (Fixtures.ComplexJsonObject);
+        }
+
+        [Benchmark]
+        public string Serialize_Utf8Json_Complex_ToString ()
+        {
+            return Utf8Json.JsonSerializer.ToJsonString (Fixtures.ComplexJsonObject);
         }
 
         [Benchmark]
