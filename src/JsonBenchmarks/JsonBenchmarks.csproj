@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="benchmarkdotnet" Version="0.11.5" />
+    <PackageReference Include="jil" Version="2.17.0" />
+    <PackageReference Include="newtonsoft.json" Version="12.0.2" />
+    <PackageReference Include="spanjson" Version="2.0.14" />
+    <PackageReference Include="utf8json" Version="1.3.7" />
+  </ItemGroup>
+
+</Project>
