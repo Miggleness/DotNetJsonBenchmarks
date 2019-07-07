@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using BenchmarkDotNet.Running;
 
 namespace JsonBenchmarks
@@ -7,8 +9,8 @@ namespace JsonBenchmarks
     {
         static void Main (string[] args)
         {
-            BenchmarkRunner.Run<StandardBenchmarks> ();
-
+            BenchmarkRunner.Run<SyncBenchmarks> ();
+            BenchmarkRunner.Run<AsyncBenchmarks> ();
         }
     }
 }

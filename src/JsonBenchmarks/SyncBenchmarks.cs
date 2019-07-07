@@ -11,102 +11,102 @@ using JilJS = Jil.JSON;
 namespace JsonBenchmarks
 {
     [Config (typeof (BenchConfig))]
-    public class StandardBenchmarks
+    public class SyncBenchmarks
     {
         [Benchmark]
         public string Serialize_DotNetJson_Simple_ToString ()
         {
-            return NetJS.ToString (Fixtures.SimpleJsonObject);
+            return NetJS.ToString (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public string Serialize_SpanJson_Simple_ToString ()
         {
-            return SpanJS.Serialize (Fixtures.SimpleJsonObject);
+            return SpanJS.Serialize (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Utf8Json_Simple_ToString ()
         {
-            return Utf8Json.JsonSerializer.ToJsonString (Fixtures.SimpleJsonObject);
+            return Utf8Json.JsonSerializer.ToJsonString (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Newtonsoft_Simple_ToString ()
         {
-            return JsonNet.SerializeObject (Fixtures.SimpleJsonObject);
+            return JsonNet.SerializeObject (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Jil_Simple_ToString ()
         {
-            return JilJS.Serialize (Fixtures.SimpleJsonObject);
+            return JilJS.Serialize (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_DotNetJson_Simple_ToUtf8 ()
         {
-            return NetJS.ToUtf8Bytes (Fixtures.SimpleJsonObject);
+            return NetJS.ToUtf8Bytes (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_SpanJson_Simple_ToUtf8 ()
         {
-            return SpanJS8.Serialize (Fixtures.SimpleJsonObject);
+            return SpanJS8.Serialize (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_Utf8Json_Simple_ToUtf8 ()
         {
-            return Utf8Json.JsonSerializer.Serialize (Fixtures.SimpleJsonObject);
+            return Utf8Json.JsonSerializer.Serialize (TestData.SimpleJsonObject);
         }
 
         [Benchmark]
         public string Serialize_DotNetJson_Complex_ToString ()
         {
-            return NetJS.ToString (Fixtures.ComplexJsonObject);
+            return NetJS.ToString (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public string Serialize_SpanJson_Complex_ToString ()
         {
-            return SpanJS.Serialize (Fixtures.ComplexJsonObject);
+            return SpanJS.Serialize (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Utf8Json_Complex_ToString ()
         {
-            return Utf8Json.JsonSerializer.ToJsonString (Fixtures.ComplexJsonObject);
+            return Utf8Json.JsonSerializer.ToJsonString (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Newtonsoft_Complex_ToString ()
         {
-            return JsonNet.SerializeObject (Fixtures.ComplexJsonObject);
+            return JsonNet.SerializeObject (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public string Serialize_Jil_Complex_ToString ()
         {
-            return JilJS.Serialize (Fixtures.ComplexJsonObject);
+            return JilJS.Serialize (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_DotNetJson_Complex_ToUtf8 ()
         {
-            return NetJS.ToUtf8Bytes (Fixtures.ComplexJsonObject);
+            return NetJS.ToUtf8Bytes (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_SpanJson_Complex_ToUtf8 ()
         {
-            return SpanJS8.Serialize (Fixtures.ComplexJsonObject);
+            return SpanJS8.Serialize (TestData.ComplexJsonObject);
         }
 
         [Benchmark]
         public byte[] Serialize_Utf8Json_Complex_ToUtf8 ()
         {
-            return Utf8Json.JsonSerializer.Serialize (Fixtures.ComplexJsonObject);
+            return Utf8Json.JsonSerializer.Serialize (TestData.ComplexJsonObject);
         }
     }
 }
