@@ -42,18 +42,13 @@ Runtime=Core
 
 This set of asynchronous tests uses a custom implementation of a memory stream which performs Task.Yield() to force an asynchronous operation.
 
-```ini
+There is a key difference between `Utf8Json` and `System.Text.Json` when reading from a source stream asynchronously.
 
-BenchmarkDotNet=v0.11.5, OS=macOS Mojave 10.14.5 (18F132) [Darwin 18.6.0]
-Intel Core i5-5287U CPU 2.90GHz (Broadwell), 1 CPU, 4 logical and 2 physical cores
-.NET Core SDK=3.0.100-preview6-012264
-  [Host] : .NET Core 3.0.0-preview6-27804-01 (CoreCLR 4.700.19.30373, CoreFX 4.700.19.30308), 64bit RyuJIT
-  Core   : .NET Core 3.0.0-preview6-27804-01 (CoreCLR 4.700.19.30373, CoreFX 4.700.19.30308), 64bit RyuJIT
+`Utf8Json` requests a maximum of 64KB as buffer and reads the entire stream into the buffer. If the allocated buffer capacity isn't enough then it is doubled. This means that if your JSON payload is 75KB in size, all 75KB will be placed in the buffer before it's processed.
 
-Job=Core  Jit=RyuJit  Platform=X64
-Runtime=Core
+`System.Text.Json` on the otherhand requests for a maximum of 16KB for the buffer which is then filled with data read off the stream. The buffered bytes (block) is processed when its capacity is reached or until end of stream. In case the buffer's capacity is reached first, it loops back to reading subsequence data in the stream. If you have an 75KB JSON payload, it will be processed in five 16KB blocks.
 
-```
+The type of benchmark that we have here favors `Utf8Json`. It would be interesting to see how these two compare in realistic use cases. Theoritically, `System.Text.Json` should perform better in reading JSON payload when the connection from the client to the server is iffy or when dealing with very large JSON payload.
 
 | Method                                     |       Mean |     Error |    StdDev |   Gen 0 |  Gen 1 | Gen 2 | Allocated |
 | ------------------------------------------ | ---------: | --------: | --------: | ------: | -----: | ----: | --------: |
